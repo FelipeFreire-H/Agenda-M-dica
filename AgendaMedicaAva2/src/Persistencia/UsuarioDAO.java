@@ -207,15 +207,14 @@ public class UsuarioDAO extends ConexaoComOBancoDeDados implements InterfaceDAO<
                 usuario.setIdentificador(lista.getInt("IDENTIFICADOR"));
                 usuario.setNome(lista.getString("NOME"));
                 usuario.setUserName(lista.getString("USERNAME"));
-                //verificar pois o SetSexo precisa de uma entrada do tipo char
-                usuario.setSexo(usuario.getSexo());
+                usuario.setSexo(lista.getString("SEXO").charAt(0));
                 usuario.setAtivo(true);
                 usuario.setCpfCnpj(lista.getString("CPF_CNPJ"));
                 usuario.setDataCadastro(lista.getDate("DATA_CADASTRO"));
                 usuario.setDataNascimento(lista.getDate("DATA_NASCIMENTO"));
                 usuario.setSenha(lista.getString("SENHA"));
-                // usuario.setListaEndereco();
-                // usuario.setListaTelefone();
+                //usuario.setListaEndereco();
+                //usuario.setListaTelefone();
                 usuario.setPerfil(daoPerfil.buscarPorId(lista.getInt("IDENTIFICADOR_PERFIL")));     
             }
 
