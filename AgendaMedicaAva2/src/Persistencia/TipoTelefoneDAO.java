@@ -15,6 +15,7 @@ public class TipoTelefoneDAO  extends ConexaoComOBancoDeDados implements Interfa
     
          String sql = "INSERT INTO TIPO_TELEFONE "
                 + "(DESCRICAO) VALUES "
+                 //tipoTelefone.getDescricao();
                 + "(?);";
 
         try {
@@ -30,7 +31,8 @@ public class TipoTelefoneDAO  extends ConexaoComOBancoDeDados implements Interfa
         }
         
     }
-
+    // TipoTelefona é um TIPO , enquanto tipoTelefone é um atributo
+    // where restrição
     @Override
     public void modificar(TipoTelefone tipoTelefone) {
         
@@ -108,15 +110,15 @@ public class TipoTelefoneDAO  extends ConexaoComOBancoDeDados implements Interfa
 
     @Override
     public List<TipoTelefone> listarTodos() {
-       
-        List<TipoTelefone> listaDeTiposDeTelefone= new ArrayList<TipoTelefone>();
+       //List é uma interface, por isso é necessário passar uma classe concreta que nesse caso é o ArrayList
+        List<TipoTelefone> listaDeTiposDeTelefone = new ArrayList<TipoTelefone>();
 
         String sql = "SELECT * FROM TIPO_TELEFONE";
 
         try {
             conectar();
             PreparedStatement pstm = conexao.prepareStatement(sql);
-
+            
             ResultSet lista = pstm.executeQuery();
 
             while (lista.next()) {
